@@ -1,0 +1,31 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sb
+
+data = pd.read_csv("/content/auto_mpg.csv")
+
+data.dropna(inplace=True)
+
+sb.set(style="whitegrid")
+plt.figure(figsize=(16,10))
+
+plt.subplot(2,3,1)
+sb.histplot(data["mpg"], bins=20, kde=True)
+plt.title("Histogram of MPG")
+plt.xlabel("MPG")
+plt.ylabel("Frequency")
+
+plt.subplot(2,3,2)
+sb.boxplot(x=data["mpg"])
+plt.title("Boxplot of MPG")
+plt.xlabel("MPG")
+
+plt.subplot(2,3,3)
+sb.scatterplot(x=data['weight'], y=data["mpg"])
+plt.title("Scatterplot of MPG vs Weight")
+plt.xlabel("Weight")
+plt.ylabel("MPG")
+
+plt.subplot(2,3,4)
+sb.pairplot(data, diag_kind="kde", markers="+")
+plt.title("Pair plot of all numerical", y=1.02)
