@@ -1,0 +1,24 @@
+import pandas as pd
+import numpy as np
+
+# Load the dataset
+df = pd.read_csv("/content/auto_mpg.csv")
+df.head()
+
+column_names = ['mpg', 'Cylinders', 'Displacement', 'Horsepower', 'Weight', 'Acceleration', 'Model Year', 'Origin']
+df.dropna(inplace=True)
+mean_mpg = df['mpg'].mean()
+median_mpg = df['mpg'].median()
+mode_mpg = df['mpg'].mode()[0]
+
+print(f"Mean MPG: {mean_mpg}")
+print(f"Median MPG: {median_mpg}")
+print(f"Mode MPG: {mode_mpg}")
+
+# Spread
+std_mpg = df['mpg'].std()
+variance_mpg = df['mpg'].var()
+
+print(f"Standard Deviation of MPG: {std_mpg}")
+print(f"Variance of MPG: {variance_mpg}")
+
